@@ -11,30 +11,36 @@ int main()
     G.addEdge(1, 3);
     G.addEdge(1, 2);
     int n = G.getN();
-    double epsilon = 0.5, N = 10, t = 10;
+
+    double epsilon = 0.01;
+    double N = 1000;
+    double t = 20000;
 
     vector<double> d(n, 0);
 
+    // init round
     srand( (unsigned)time( NULL ) );
 
     for (int i = 0; i < t; i++)
     {
+        // choose random vertex
         int currVertex = rand() % (G.getN());
 
         for (int j = 0; j < N; j++)
         {
+            // choose (1 - epsilon) or epsilon
             bool flag = ((float) rand()/RAND_MAX) < (1 - epsilon);
 
-            if (flag && G.checkIfExistNeighbor(currVertex)) // go to random neighbor (if no neighbors go to random verted)
+            // go to random neighbor (if no neighbors go to random vertex)
+            if (flag && G.checkIfExistNeighbor(currVertex))
             {
                 vector<int> neighbors = G.getNeighbors(currVertex);
-                int length = neighbors.size();
-
-                currVertex = neighbors.at(rand() % (length));
+                currVertex = neighbors.at(rand() % (neighbors.size())); // draw a random neighbor
             }
-            else    // go to random vertex
+            else
             {
-                currVertex = rand() % (n);
+                // draw a random vertex
+                currVertex = rand() % n;
             }
 
         }
@@ -43,11 +49,14 @@ int main()
 
     // divide every cell in d by t
     for (int i = 0; i < n; i++)
+    {
         d[i] /= t;
+    }
 
     // print d
     for (int i = 0; i < n; i++)
+    {
         cout << d[i] << " ";
-
+    }
     cout << endl;
 }
