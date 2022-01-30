@@ -46,13 +46,13 @@ bool Gragh::checkIfExistNeighbor(int vertex)
     return false;
 }
 /********************************************************************************/
-vector<int> Gragh::getNeighbors(int vertx)
+vector<int> Gragh::getNeighbors(int vertex)
 {
     vector<int> neighbors;
 
     for (int i = 0; i < n; i++)
     {
-        if (G[vertx][i] == 1)
+        if (G[vertex][i] == 1)
         {
             neighbors.push_back(i);
         }
