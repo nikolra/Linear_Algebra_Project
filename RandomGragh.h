@@ -16,7 +16,7 @@ public:
     vector<int> getNeighbors(int vertex) const;
 
     void addEdge(int i, int j);
-    void removeEdge(int i, int j);
+    void addRingGragh(int n);
 
     int calAvgDegree() const;
     int howMuchNeighbors(int vertex) const;

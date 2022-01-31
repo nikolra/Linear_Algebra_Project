@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "Gragh.h"
 
@@ -24,11 +23,6 @@ void Gragh::printGragh()
 void Gragh::addEdge(int i, int j)
 {
     G[i][j] = 1;
-}
-/********************************************************************************/
-void Gragh::removeEdge(int i, int j)
-{
-    G[i][j] = 0;
 }
 /********************************************************************************/
 int Gragh::getN()
