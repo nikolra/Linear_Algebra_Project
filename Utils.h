@@ -8,10 +8,10 @@ class Utils
 {
 public:
     static double calDistance(vector<double> lastD, vector<double> currD);
-    static void printDoubleVector(vector<double> vector);
+    static double calDistancePer(vector<double> lastD, vector<double> currD);
+    static double calAvgVector(vector<double> d);
+    static void printVector(vector<double> vector);
     static vector<double> pageRank(Gragh& G, double epsilon, double N, double t);
-    static vector<double> pageRank(RandomGragh& G, double epsilon, double N, double t);
-    static vector<double> spcPageRank(RandomGragh& G, double epsilon, double N);
-    static vector<double> spcPageRank(RandomGraghV2& G, double epsilon, double N);
+    static vector<double> spcPageRank(Gragh& G, double epsilon, double N);
 };
 

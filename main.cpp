@@ -1,67 +1,27 @@
 #include <iostream>
 #include <math.h>
 #include "Gragh.cpp"
-#include "RandomGragh.cpp"
-#include "RandomGraghV2.cpp"
 #include "Utils.cpp"
 
 using namespace std;
 
 int main()
 {
-    RandomGraghV2 G(1024);
-    G.addRingGragh(64);
+    int n = 4;
+    double epsilon = 0.6;
+    double N = 1000;
+    double t = 100;
+    Gragh g(4);
 
-    vector<double> d = Utils::spcPageRank(G, 0, 128);
+    g.addEdge(0,1);
+    g.addEdge(0,2);
+    g.addEdge(0,3);
+    g.addEdge(2,1);
+    g.addEdge(2,3);
 
-    cout << "\n\n\n\n" << endl;
-    cout << "Avg of the original vertexes: ";
+    vector<double> d = Utils::pageRank(g, epsilon, N, t);
 
-    double sum = 0;
-    for (int i = 0; i < 1024; i++)
-        sum += d[i];
-
-    cout << sum/1024 << endl;
-
-    cout << "Avg of the new vertexes: ";
-    sum = 0;
-    for (int i = 1024; i < 1088; i++)
-        sum += d[i];
-
-    cout << sum/64 << endl;
-    cout << "\n\n\n\n";
+    Utils::printVector(d);
 
 
-    /*
-    vector<int> indexes(1024 + 64);
-
-    for (int i = 0; i < 1088; i++)
-        indexes[i] = i;
-
-    for (int i = 0; i < 1086; i++)
-    {
-        for (int j = 0; j < (1087 - i); j++)
-        {
-            if (d[j] > d[j + 1])
-            {
-                double temp = d[j];
-                d[j] = d[j + 1];
-                d[j + 1] = temp;
-
-                int temp2 = indexes[j];
-                indexes[j] = indexes[j + 1];
-                indexes[j + 1] = temp2;
-            }
-        }
-    }
-
-    for (int i = 0; i < 1088; i++)
-    {
-        cout << "Value: " << d[i] << "   Index: " << indexes[i] << endl;
-    }
-
-
-
-
-*/
 }
