@@ -1,14 +1,14 @@
 #include <iostream>
-#include "Gragh.h"
+#include "graph.h"
 
 using namespace std;
 
 /********************************************************************************/
-Gragh::Gragh(int _n) : G(_n, vector<int>(_n, 0)), n(_n)
+graph::graph(int _n) : G(_n, vector<int>(_n, 0)), n(_n)
 {
 }
 /********************************************************************************/
-void Gragh::setToRandomGraghV1(double p)
+void graph::setToRandomGraphV1(double p)
 {
     // init rand
     srand( (unsigned)time( NULL ) );
@@ -24,8 +24,10 @@ void Gragh::setToRandomGraghV1(double p)
         }
     }
 }
+
+// (i, j), 1/log2(j + 1)
 /********************************************************************************/
-void Gragh::setToRandomGraghV2()
+void graph::setToRandomGraphV2()
 {
     // init rand
     srand( (unsigned)time( NULL ) );
@@ -40,11 +42,11 @@ void Gragh::setToRandomGraghV2()
     }
 }
 /********************************************************************************/
-void Gragh::addRingGragh(int size)
+void graph::addRingGraph(int size)
 {
     vector<vector<int>> newGragh(n + size, vector<int>(n + size, 0));
 
-    // copy the last gragh part:
+    // copy the last graph part:
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
@@ -53,7 +55,7 @@ void Gragh::addRingGragh(int size)
         }
     }
 
-    // create to ring gragh (in his part):
+    // create to ring graph (in his part):
     for (int i = n; i < (n + size); i++)
     {
         if (i == (n + size - 1))
@@ -64,15 +66,15 @@ void Gragh::addRingGragh(int size)
     // init rand
     srand( (unsigned)time( NULL ) );
 
-    // pick a random vertex from the original gragh and connect him to some vertex in the ring gragh
+    // pick a random vertex from the original graph and connect him to some vertex in the ring gragh
     newGragh[rand() % n][n] = 1;
-    // replace the old gragh to the new gragh
+    // replace the old gragh to the new graph
     G = newGragh;
     // update n
     n = n + size;
 }
 /********************************************************************************/
-int Gragh::calAvgDegree() const
+int graph::calAvgDegree() const
 {
     int sum = 0;
 
@@ -80,11 +82,11 @@ int Gragh::calAvgDegree() const
     for (int i = 0; i < n; i++)
         sum += howMuchNeighbors(i);
 
-    // devide sum by n to find the averge
+    // divide sum by n to find the average
     return (sum / n);
 }
 /********************************************************************************/
-int Gragh::howMuchNeighbors(int vertex) const
+int graph::howMuchNeighbors(int vertex) const
 {
     int res = 0;
 
@@ -101,7 +103,7 @@ int Gragh::howMuchNeighbors(int vertex) const
     return res;
 }
 /********************************************************************************/
-void Gragh::printGragh()
+void graph::printGraph()
 {
     for (int i = 0; i < n; i++)
     {
@@ -113,17 +115,17 @@ void Gragh::printGragh()
     }
 }
 /********************************************************************************/
-void Gragh::addEdge(int i, int j)
+void graph::addEdge(int i, int j)
 {
     G[i][j] = 1;
 }
 /********************************************************************************/
-int Gragh::getN()
+int graph::getN()
 {
     return n;
 }
 /********************************************************************************/
-bool Gragh::checkIfExistNeighbor(int vertex)
+bool graph::checkIfExistNeighbor(int vertex)
 {
     for (int i = 0; i < n; i++)
     {
@@ -133,7 +135,7 @@ bool Gragh::checkIfExistNeighbor(int vertex)
     return false;
 }
 /********************************************************************************/
-vector<int> Gragh::getNeighbors(int vertex)
+vector<int> graph::getNeighbors(int vertex)
 {
     vector<int> neighbors;
 

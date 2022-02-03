@@ -44,7 +44,7 @@ double Utils::calAvgVector(vector<double> d)
     return (sum / d.size());
 }
 /********************************************************************************/
-vector<double> Utils::pageRank(Gragh& G, double epsilon, double N, double t)
+vector<double> Utils::pageRank(graph& G, double epsilon, double N, double t)
 {
     vector<double> d(G.getN(), 0);
 
@@ -83,7 +83,7 @@ vector<double> Utils::pageRank(Gragh& G, double epsilon, double N, double t)
     return d;
 }
 /********************************************************************************/
-vector<double> Utils::spcPageRank(Gragh& G, double epsilon, double N)
+vector<double> Utils::spcPageRank(graph& G, double epsilon, double N)
 {
     // init rand
     srand( (unsigned)time( NULL ) );

@@ -11,7 +11,7 @@ public:
     static double calDistancePer(vector<double> lastD, vector<double> currD);
     static double calAvgVector(vector<double> d);
     static void printVector(vector<double> vector);
-    static vector<double> pageRank(Gragh& G, double epsilon, double N, double t);
-    static vector<double> spcPageRank(Gragh& G, double epsilon, double N);
+    static vector<double> pageRank(graph& G, double epsilon, double N, double t);
+    static vector<double> spcPageRank(graph& G, double epsilon, double N);
 };
 
