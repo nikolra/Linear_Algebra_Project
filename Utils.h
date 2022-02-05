@@ -13,5 +13,6 @@ public:
     static void printVector(vector<double> vector);
     static vector<double> pageRank(graph& G, double epsilon, double N, double t);
     static vector<double> spcPageRank(graph& G, double epsilon, double N);
+    static void Question10(graph& G);
 };
 

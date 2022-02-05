@@ -119,6 +119,22 @@ vector<double> Utils::spcPageRank(graph& G, double epsilon, double N)
     return currD;
 }
 /********************************************************************************/
+void Utils::Question10(graph& G)
+{
+    double N;
+    double e; // epsilon
+
+    for (int i = 1; i <= 10; ++i)
+    {
+        e = (double)1 / pow(2,i);
+        cout << "e = " << e << " 1/(2^" << i << ")" << endl;
+
+        N = (double)e / 2;
+        vector<double> d = Utils::spcPageRank(G, e, N);
+        Utils::printVector(d);
+    }
+}
+/********************************************************************************/
 void Utils::printVector(vector<double> vector)
 {
     cout << "(";
